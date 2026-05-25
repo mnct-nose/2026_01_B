@@ -37,3 +37,7 @@ body {
   border-color: #fff #fff #a8d4ff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }/*h1タイトル
+
+body {
+  min-height: 200vh;
+}
