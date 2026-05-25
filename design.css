@@ -1,7 +1,7 @@
 body {
     background-color: #afc5e4; /* 背景を薄いグレーに */
     color: #060606; 
-    min-height: 300vh;          /* 文字を濃いグレーにして読みやすく */
+    min-height: 500vh;          /* 文字を濃いグレーにして読みやすく */
 }
 
 .btn-square {
