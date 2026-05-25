@@ -7,8 +7,8 @@ from matplotlib.ticker import ScalarFormatter, FuncFormatter
 from japanmap import picture, pref_names, pref_code
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-csv_path = os.path.join(SCRIPT_DIR, "pref202604.csv")
-output_path = os.path.join(SCRIPT_DIR, "tourism_map_2026_04.png")
+csv_path = os.path.join(SCRIPT_DIR, "pref202510.csv")
+output_path = os.path.join(SCRIPT_DIR, "tourism_map_2025_10.png")
 
 df = pd.read_csv(csv_path, encoding="cp932")
 
@@ -32,7 +32,7 @@ color_dict = {k: color_scale(v) for k, v in num_dict.items()}
 
 fig, ax = plt.subplots(figsize=(10, 8))
 ax.imshow(picture(color_dict))
-ax.set_title("tourist population for each prefecture (April 2026)", fontsize=14)
+ax.set_title("tourist population for each prefecture (October 2025)", fontsize=14)
 ax.axis("off")
 
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
