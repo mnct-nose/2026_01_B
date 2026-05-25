@@ -27,7 +27,7 @@ h1 {
   color: #454545;
 }
 
-h1:after {
+.page-header:after {
   position: absolute;
   content: '';
   left: -7px;
