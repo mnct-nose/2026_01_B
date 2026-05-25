@@ -1,6 +1,7 @@
 body {
     background-color: #afc5e4; /* 背景を薄いグレーに */
-    color: #060606;           /* 文字を濃いグレーにして読みやすく */
+    color: #060606; 
+    min-height: 300vh;          /* 文字を濃いグレーにして読みやすく */
 }
 
 .btn-square {
@@ -38,6 +39,3 @@ body {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }/*h1タイトル
 
-body {
-  min-height: 200vh;
-}
