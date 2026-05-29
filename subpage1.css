@@ -1,249 +1,331 @@
-/* ==========================================
-   1. 全体のベース設定
-   ========================================== */
+/* Apple Store inspired visual system for the FIFA World Cup 2026 page */
+:root {
+    --page: #f5f5f7;
+    --card: #ffffff;
+    --card-soft: #fbfbfd;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --muted-strong: #515154;
+    --blue: #0066cc;
+    --orange: #bf4800;
+    --line: rgba(0, 0, 0, 0.08);
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+    --radius-lg: 30px;
+    --radius-md: 22px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 40%, #1a3a50 100%);
-    background-attachment: fixed;
-    color: #f0f0f0;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    line-height: 1.8;
-    letter-spacing: 0.05em;
-    min-height: 100vh;
-    padding: 40px 5%;
+html {
+    scroll-behavior: smooth;
 }
 
-/* ==========================================
-   2. ヘッダー
-   ========================================== */
+body {
+    min-height: 100vh;
+    background: var(--page);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.7;
+    letter-spacing: 0;
+    padding: 54px 0 88px;
+}
+
 .page-header {
-    position: relative;
-    max-width: 860px;
-    margin: 0 auto 50px auto;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: solid 2px rgba(255, 255, 255, 0.25);
-    border-radius: 14px;
-    padding: 1.8em 2.5em;
-    color: #ffffff;
-    text-align: center;
+    width: min(1280px, calc(100% - 80px));
+    min-height: 340px;
+    margin: 0 auto 42px;
+    display: grid;
+    align-content: center;
+    padding: 56px 0 72px;
 }
 
 .page-header h1 {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.4em;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    max-width: 980px;
+    margin-bottom: 20px;
+    color: var(--text);
+    font-size: clamp(4.2rem, 8vw, 7.2rem);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.06em;
 }
 
 .page-header .lead {
-    font-size: 0.95rem;
-    color: #d0e8d0;
-    margin-bottom: 1.2em;
+    max-width: 880px;
+    margin-bottom: 26px;
+    color: var(--muted);
+    font-size: clamp(1.25rem, 2vw, 1.72rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
 }
 
-/* ==========================================
-   3. 戻るボタン
-   ========================================== */
 .btn-back {
-    display: inline-block;
-    padding: 0.5em 1.5em;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.68rem 1.35rem;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border: solid 1px rgba(255, 255, 255, 0.4);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    transition: background 0.2s ease, transform 0.1s ease;
+    transition: background 0.18s ease, transform 0.18s ease;
 }
 
 .btn-back:hover {
-    background: rgba(255, 255, 255, 0.35);
-    transform: translateY(-2px);
+    background: #0071e3;
+    text-decoration: none;
+    transform: translateY(-1px);
 }
 
-/* ==========================================
-   4. セクション共通
-   ========================================== */
+.btn-back:active {
+    transform: translateY(0);
+}
+
+main {
+    width: min(1280px, calc(100% - 80px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
 .section {
-    max-width: 860px;
-    margin: 0 auto 50px auto;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: solid 1px rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 2em 2.5em;
+    position: relative;
+    min-height: 330px;
+    padding: 38px 42px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow);
+}
+
+.section:nth-child(1),
+.section:nth-child(2),
+.section:nth-child(4),
+.section.references {
+    grid-column: 1 / -1;
+}
+
+.section::after {
+    content: "";
+    position: absolute;
+    right: -120px;
+    bottom: -150px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(175, 82, 222, 0.08));
+    pointer-events: none;
+}
+
+.section h2,
+.section h3,
+.section p,
+.section table,
+.format-flow,
+.references ul {
+    position: relative;
+    z-index: 1;
 }
 
 .section h2 {
-    font-size: 1.4rem;
-    color: #a8d8a8;
-    border-left: 4px solid #4caf50;
-    padding-left: 0.7em;
-    margin-bottom: 1em;
+    max-width: 900px;
+    margin-bottom: 22px;
+    color: var(--text);
+    font-size: clamp(2.1rem, 3.2vw, 3.55rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.055em;
 }
 
 .section h3 {
-    font-size: 1.1rem;
-    color: #c8e8c8;
-    margin: 1.5em 0 0.7em 0;
-    padding-bottom: 0.3em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 34px 0 14px;
+    color: var(--text);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+}
+
+.section h3::before {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 4px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--orange), #ff9f0a);
 }
 
 .section p {
-    margin-bottom: 0.9em;
-    color: #e8e8e8;
+    max-width: 960px;
+    margin-bottom: 18px;
+    color: var(--muted-strong);
+    font-size: 1.08rem;
+    font-weight: 400;
+    line-height: 1.82;
 }
 
-/* ==========================================
-   5. 概要テーブル
-   ========================================== */
-.info-table {
+.section p:last-child {
+    margin-bottom: 0;
+}
+
+.info-table,
+.venue-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 0.5em;
+    margin: 8px 0 16px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
 }
 
 .info-table th,
-.info-table td {
-    padding: 0.75em 1em;
+.info-table td,
+.venue-table th,
+.venue-table td {
+    padding: 17px 20px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     vertical-align: top;
+    border-bottom: 1px solid var(--line);
+    color: var(--text);
+    font-size: 1rem;
+    line-height: 1.55;
 }
 
 .info-table th {
-    width: 30%;
-    color: #a8d8a8;
-    font-weight: bold;
+    width: 220px;
+    color: var(--muted);
+    font-weight: 600;
     white-space: nowrap;
 }
 
-.info-table td {
-    color: #f0f0f0;
-}
-
-.info-table tr:last-child th,
-.info-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* ==========================================
-   6. 会場テーブル
-   ========================================== */
-.venue-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
-}
-
 .venue-table thead tr {
-    background: rgba(76, 175, 80, 0.25);
+    background: #f5f5f7;
 }
 
 .venue-table th {
-    padding: 0.65em 1em;
-    text-align: left;
-    color: #c8f0c8;
-    font-weight: bold;
-    border-bottom: 2px solid rgba(76, 175, 80, 0.5);
+    color: var(--muted);
+    font-weight: 600;
 }
 
-.venue-table td {
-    padding: 0.65em 1em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #e8e8e8;
+.info-table tr:last-child th,
+.info-table tr:last-child td,
+.venue-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.venue-table tbody tr {
+    transition: background 0.16s ease;
 }
 
 .venue-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: #ffffff;
 }
 
-/* ==========================================
-   7. 大会方式フロー
-   ========================================== */
 .format-flow {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5em;
-    margin-top: 1.5em;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .flow-step {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 0.8em 1em;
+    min-height: 144px;
+    padding: 20px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
     text-align: center;
-    min-width: 100px;
-    flex: 1;
 }
 
 .flow-step.highlight {
-    background: rgba(76, 175, 80, 0.3);
-    border-color: #4caf50;
-    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+    background: #1d1d1f;
+    color: #ffffff;
 }
 
 .step-num {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #a8d8a8;
+    color: var(--orange);
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.flow-step.highlight .step-num,
+.flow-step.highlight .step-label,
+.flow-step.highlight .step-detail {
+    color: #ffffff;
 }
 
 .step-label {
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: #ffffff;
-    margin: 0.2em 0;
+    margin: 12px 0 8px;
+    color: var(--text);
+    font-size: 0.98rem;
+    font-weight: 700;
+    line-height: 1.28;
+    letter-spacing: -0.02em;
 }
 
 .step-detail {
-    font-size: 0.75rem;
-    color: #b0c8b0;
-    line-height: 1.4;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.45;
 }
 
 .flow-arrow {
-    font-size: 1.4rem;
-    color: #4caf50;
-    flex: 0 0 auto;
+    display: none;
 }
 
-/* ==========================================
-   8. 参考文献
-   ========================================== */
 .references ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
     list-style: none;
-    padding: 0;
 }
 
 .references li {
-    margin-bottom: 1.2em;
-    padding-left: 1em;
-    border-left: 3px solid rgba(76, 175, 80, 0.5);
-    color: #e0e0e0;
-    font-size: 0.9rem;
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
+    color: var(--muted-strong);
+    font-size: 0.98rem;
+    line-height: 1.65;
 }
 
 .references a {
-    color: #80c8ff;
+    color: var(--blue);
     text-decoration: none;
     word-break: break-all;
-    font-size: 0.85rem;
 }
 
 .references a:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 960px) {
+    .page-header,
+    main {
+        width: min(900px, calc(100% - 48px));
+    }
+
+    main,
+    .references ul {
+        grid-template-columns: 1fr;
+    }
+
+    .format-flow {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
