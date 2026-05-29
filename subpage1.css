@@ -1,6 +1,8 @@
 /* ==========================================
-   1. 全体のベース設定
+   ネット黎明期風デザイン (1995-2002 style)
+   推奨環境: IE 5.5 / Netscape 4 / 800×600
    ========================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,242 +10,408 @@
 }
 
 body {
-    background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 40%, #1a3a50 100%);
-    background-attachment: fixed;
-    color: #f0f0f0;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    line-height: 1.8;
-    letter-spacing: 0.05em;
+    background-color: #c0c0c0;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGklEQVQIW2NkYGD4z8BQDwQMjCBmPQMDAwAIxgEBnZ4PkQAAAABJRU5ErkJggg==");
+    color: #000000;
+    font-family: "MS PGothic", "ＭＳ Ｐゴシック", "MS Gothic", Osaka, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    letter-spacing: 0;
     min-height: 100vh;
-    padding: 40px 5%;
+    padding: 8px;
 }
 
 /* ==========================================
-   2. ヘッダー
+   ヘッダー (Win95風タイトルバー)
    ========================================== */
 .page-header {
-    position: relative;
-    max-width: 860px;
-    margin: 0 auto 50px auto;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    border: solid 2px rgba(255, 255, 255, 0.25);
-    border-radius: 14px;
-    padding: 1.8em 2.5em;
+    background: #000080;
     color: #ffffff;
-    text-align: center;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #404040;
+    border-bottom: 2px solid #404040;
+    padding: 0;
+    margin: 0 0 8px 0;
+    max-width: 100%;
+}
+
+.page-header-titlebar {
+    background: linear-gradient(to right, #000080, #1084d0);
+    padding: 3px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.page-header-body {
+    background: #c0c0c0;
+    padding: 8px 12px;
+    border-top: 1px solid #ffffff;
 }
 
 .page-header h1 {
-    font-size: 2rem;
+    font-size: 18px;
     font-weight: bold;
-    margin-bottom: 0.4em;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    color: #000080;
+    text-decoration: underline;
+    margin-bottom: 6px;
+    font-family: "MS PGothic", "ＭＳ Ｐゴシック", monospace;
+    border: none;
+    background: none;
+    padding: 0;
 }
 
 .page-header .lead {
-    font-size: 0.95rem;
-    color: #d0e8d0;
-    margin-bottom: 1.2em;
+    font-size: 12px;
+    color: #000000;
+    margin-bottom: 8px;
+}
+
+/* マーキー帯 */
+.page-header::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: repeating-linear-gradient(
+        90deg,
+        #ff0000 0px, #ff0000 10px,
+        #ffff00 10px, #ffff00 20px,
+        #00ff00 20px, #00ff00 30px,
+        #00ffff 30px, #00ffff 40px,
+        #0000ff 40px, #0000ff 50px,
+        #ff00ff 50px, #ff00ff 60px
+    );
+}
+
+/* アクセスカウンター */
+.page-header::after {
+    display: block;
+    content: "このページへのアクセス数 ： [001337]　最終更新：2026/05/29　IE5.5 / Netscape4 推奨　800×600 最適表示";
+    font-size: 11px;
+    color: #808080;
+    padding: 2px 12px 6px;
+    background: #c0c0c0;
+    border-top: 1px dotted #808080;
+    font-family: "Courier New", monospace;
 }
 
 /* ==========================================
-   3. 戻るボタン
+   戻るボタン (Win95風ボタン)
    ========================================== */
 .btn-back {
     display: inline-block;
-    padding: 0.5em 1.5em;
+    padding: 3px 12px;
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    border: solid 1px rgba(255, 255, 255, 0.4);
-    border-radius: 50px;
-    font-size: 0.85rem;
-    transition: background 0.2s ease, transform 0.1s ease;
+    background: #c0c0c0;
+    color: #000000;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    font-size: 12px;
+    font-family: "MS PGothic", monospace;
+    cursor: pointer;
 }
 
 .btn-back:hover {
-    background: rgba(255, 255, 255, 0.35);
-    transform: translateY(-2px);
+    background: #d0d0d0;
+}
+
+.btn-back:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 
 /* ==========================================
-   4. セクション共通
+   セクション共通 (掲示板・メモ帳風)
    ========================================== */
 .section {
-    max-width: 860px;
-    margin: 0 auto 50px auto;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border: solid 1px rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 2em 2.5em;
+    background: #ffffff;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    padding: 8px 12px;
+    margin: 0 0 10px 0;
+    max-width: 100%;
 }
 
 .section h2 {
-    font-size: 1.4rem;
-    color: #a8d8a8;
-    border-left: 4px solid #4caf50;
-    padding-left: 0.7em;
-    margin-bottom: 1em;
+    font-size: 14px;
+    color: #ffffff;
+    background: #000080;
+    padding: 2px 8px;
+    margin: 0 -12px 8px -12px;
+    font-family: "MS PGothic", monospace;
+    border: none;
+    border-left: none;
 }
 
 .section h3 {
-    font-size: 1.1rem;
-    color: #c8e8c8;
-    margin: 1.5em 0 0.7em 0;
-    padding-bottom: 0.3em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 13px;
+    color: #000080;
+    font-weight: bold;
+    margin: 10px 0 4px 0;
+    padding: 0 0 2px 0;
+    border-bottom: 1px solid #000080;
+    font-family: "MS PGothic", monospace;
 }
 
 .section p {
-    margin-bottom: 0.9em;
-    color: #e8e8e8;
+    margin-bottom: 6px;
+    color: #000000;
+    font-size: 13px;
+}
+
+/* NEW バッジ点滅 */
+.section h2::after {
+    content: " ★NEW★";
+    color: #ffff00;
+    font-size: 11px;
+    animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
 }
 
 /* ==========================================
-   5. 概要テーブル
+   概要テーブル
    ========================================== */
 .info-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0.5em;
+    margin-top: 4px;
+    font-size: 12px;
 }
 
 .info-table th,
 .info-table td {
-    padding: 0.75em 1em;
+    padding: 3px 8px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #808080;
     vertical-align: top;
 }
 
 .info-table th {
     width: 30%;
-    color: #a8d8a8;
+    background: #000080;
+    color: #ffffff;
     font-weight: bold;
     white-space: nowrap;
+    font-family: "MS PGothic", monospace;
 }
 
 .info-table td {
-    color: #f0f0f0;
+    background: #ffffff;
+    color: #000000;
 }
 
-.info-table tr:last-child th,
-.info-table tr:last-child td {
-    border-bottom: none;
+.info-table tr:nth-child(even) td {
+    background: #f0f0f0;
 }
 
 /* ==========================================
-   6. 会場テーブル
+   会場テーブル
    ========================================== */
 .venue-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0.5em;
-    margin-bottom: 1em;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    font-size: 12px;
 }
 
 .venue-table thead tr {
-    background: rgba(76, 175, 80, 0.25);
+    background: #000080;
 }
 
 .venue-table th {
-    padding: 0.65em 1em;
+    padding: 3px 8px;
     text-align: left;
-    color: #c8f0c8;
+    color: #ffffff;
     font-weight: bold;
-    border-bottom: 2px solid rgba(76, 175, 80, 0.5);
+    border: 1px solid #404040;
+    font-family: "MS PGothic", monospace;
 }
 
 .venue-table td {
-    padding: 0.65em 1em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    color: #e8e8e8;
+    padding: 3px 8px;
+    border: 1px solid #808080;
+    background: #ffffff;
+    color: #000000;
 }
 
-.venue-table tbody tr:hover {
-    background: rgba(255, 255, 255, 0.06);
+.venue-table tbody tr:nth-child(even) td {
+    background: #ffffcc;
+}
+
+.venue-table tbody tr:hover td {
+    background: #ccccff;
 }
 
 /* ==========================================
-   7. 大会方式フロー
+   フロー (矢印リスト風)
    ========================================== */
 .format-flow {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 0.5em;
-    margin-top: 1.5em;
+    gap: 4px;
+    margin-top: 8px;
 }
 
 .flow-step {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    padding: 0.8em 1em;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    padding: 6px 8px;
     text-align: center;
-    min-width: 100px;
+    min-width: 90px;
     flex: 1;
 }
 
 .flow-step.highlight {
-    background: rgba(76, 175, 80, 0.3);
-    border-color: #4caf50;
-    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+    background: #000080;
+}
+
+.flow-step.highlight .step-num,
+.flow-step.highlight .step-label,
+.flow-step.highlight .step-detail {
+    color: #ffffff;
 }
 
 .step-num {
-    font-size: 1.5rem;
+    font-size: 16px;
     font-weight: bold;
-    color: #a8d8a8;
+    color: #000080;
+    font-family: "Courier New", monospace;
 }
 
 .step-label {
-    font-size: 0.85rem;
+    font-size: 12px;
     font-weight: bold;
-    color: #ffffff;
-    margin: 0.2em 0;
+    color: #000000;
+    margin: 2px 0;
+    font-family: "MS PGothic", monospace;
 }
 
 .step-detail {
-    font-size: 0.75rem;
-    color: #b0c8b0;
-    line-height: 1.4;
+    font-size: 11px;
+    color: #404040;
+    line-height: 1.3;
 }
 
 .flow-arrow {
-    font-size: 1.4rem;
-    color: #4caf50;
+    font-size: 18px;
+    color: #ff0000;
     flex: 0 0 auto;
+    font-weight: bold;
 }
 
 /* ==========================================
-   8. 参考文献
+   参考文献
    ========================================== */
 .references ul {
-    list-style: none;
-    padding: 0;
+    list-style: square;
+    padding-left: 20px;
 }
 
 .references li {
-    margin-bottom: 1.2em;
-    padding-left: 1em;
-    border-left: 3px solid rgba(76, 175, 80, 0.5);
-    color: #e0e0e0;
-    font-size: 0.9rem;
+    margin-bottom: 10px;
+    padding-left: 4px;
+    color: #000000;
+    font-size: 12px;
+    border-left: none;
 }
 
 .references a {
-    color: #80c8ff;
-    text-decoration: none;
+    color: #0000cc;
+    text-decoration: underline;
     word-break: break-all;
-    font-size: 0.85rem;
+    font-size: 12px;
+}
+
+.references a:visited {
+    color: #800080;
 }
 
 .references a:hover {
+    color: #ff0000;
+}
+
+/* ==========================================
+   フッター ナビボタン
+   ========================================== */
+.page-footer {
+    text-align: center;
+    padding: 8px;
+    margin-top: 4px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 4px 20px;
+    background: #c0c0c0;
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "MS PGothic", monospace;
+    font-weight: bold;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background: #d0d0d0;
+    color: #000080;
+    text-decoration: none;
+}
+
+.nav-button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* ==========================================
+   水平線
+   ========================================== */
+hr {
+    border: none;
+    border-top: 2px inset #808080;
+    margin: 8px 0;
+}
+
+/* ==========================================
+   リンク全般
+   ========================================== */
+a {
+    color: #0000cc;
     text-decoration: underline;
+}
+
+a:visited {
+    color: #800080;
+}
+
+a:hover {
+    color: #ff0000;
 }
