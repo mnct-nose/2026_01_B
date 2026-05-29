@@ -1,43 +1,89 @@
-body {
-    background-color: #afc5e4; /* 背景を薄いグレーに */
-    color: #060606; 
-    min-height: 500vh;          /* 文字を濃いグレーにして読みやすく */
+/* ==========================================
+   1. 全体のベース設定（すっきり・モダン化）
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.btn-square {
-  display: inline-block;
-  padding: 0.5em 1em;
-  text-decoration: none;
-  background: #668ad8;/*ボタン色これ次変更*/
-  color: #FFF;
-  border-bottom: solid 4px #627295;
-  border-radius: 3px;
-}
-.btn-square:hover {
-  /*ボタンを押したとき*/
-  -webkit-transform: translateY(4px);
-  transform: translateY(4px);/*下に動く*/
-  border-bottom: none;/*線を消す*/
-}
-.page-header {
-  position: relative;
-  background: #dfefff;
-  box-shadow: 0px 0px 0px 5px #dfefff;
-  border: dashed 2px white;
-  padding: 0.2em 0.5em;
-  color: #454545;
-}
-
-.page-header:after {
-  position: absolute;
-  content: '';
-  left: -7px;
-  top: -7px;
-  border-width: 0 0 15px 15px;
-  border-style: solid;
-  border-color: #fff #fff #a8d4ff;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
-}/*h1タイトル
 body {
+    /* グラデーション背景で、ただのベタ塗りからエモーショナルな背景へ */
+    background: linear-gradient(135deg, #afc5e4 0%, #cfe0f4 50%, #eef5fc 100%);
+    background-attachment: fixed; /* スクロールしても背景のグラデーション位置を固定 */
+    color: #1a1a1a;               /* 真っ黒を避けて、高級感のある極濃グレーに */
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.05em;       /* 文字の間隔を少し広げて今っぽく */
+    min-height: 200vh;            /* スクロール確認用に調整（500vhは少し長すぎるので一旦200vhに） */
+    padding: 40px 5%;
+}
+
+/* ==========================================
+   2. ヘッダータイトル（洗練されたガラスリボン風）
+   ========================================== */
+.page-header {
+    position: relative;
+    max-width: 800px;             /* 横に広がりすぎないよう制限 */
+    margin: 0 auto 50px auto;     /* 中央寄せ ＋ 下の要素との余白 */
+    
+    /* トレンドのすりガラス（グラスモフィズム）要素をプラス */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* 優しい影 */
+    border: dashed 2px rgba(255, 255, 255, 0.7);
+    border-radius: 12px;          /* 角を少し丸めて柔らかく */
+    padding: 1.5em 2em;           /* 余白をたっぷり贅沢にとる */
+    color: #38486f;               /* 背景に馴染む上品なネイビーグレー */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 元々あった左上の折れ込み装飾を、丸みのあるヘッダーに合わせて微調整 */
+.page-header:after {
+    position: absolute;
+    content: '';
+    left: 10px;
+    top: -10px;
+    border-width: 0 0 15px 15px;
+    border-style: solid;
+    border-color: #fff #fff #668ad8;
+    border-radius: 0 0 4px 0;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================
+   3. 立体ボタン（クリック感を最高に気持ちよく）
+   ========================================== */
+.btn-square {
+    display: inline-block;
+    padding: 1rem 2.5rem;         /* ボタンを少し大きめにして今っぽく */
+    text-decoration: none;
+    background: linear-gradient(135deg, #668ad8 0%, #5577be 100%); /* 微細なグラデで立体感 */
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border-bottom: solid 5px #4a6aa8; /* 下線の色を少し濃くして立体感を強調 */
+    border-radius: 50px;          /* 完全に丸みを持たせるのが今のトレンド */
+    box-shadow: 0 10px 20px rgba(102, 138, 216, 0.3); /* ボタン自体が浮いているような影 */
+    
+    /* 動きを滑らかにする魔法の1行 */
+    transition: transform 0.1s ease, border-bottom 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* マウスが乗ったとき（押す前の一歩） */
+.btn-square:hover {
+    transform: translateY(-2px);  /* ほんの少し上に浮かせて「押せる感」を出す */
+    box-shadow: 0 14px 24px rgba(102, 138, 216, 0.4); /* 影を強くする */
+}
+
+/* ボタンを実際にクリックしたとき（active） */
+.btn-square:active {
+    /* 元のhoverに書いてあった「押し込む動き」をactive（クリックした瞬間）に移植 */
+    transform: translateY(5px);   /* 下線（5px）の分だけきれいに沈み込ませる */
+    border-bottom: solid 0px #4a6aa8; /* 線を完全につぶす */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影を最小限にしてベタ付けにする */
 }
