@@ -28,42 +28,55 @@ body {
 /* ==========================================
    2. ヘッダータイトル（点線囲み ＋ リボン位置最適化）
    ========================================== */
+/* ==========================================
+   2. ヘッダータイトル（点線囲み ＋ 巨大な折り目リボン）
+   ========================================== */
 .page-header {
     position: relative;
-    max-width: 1500px;             /* 横幅は維持 */
-    margin: 0 auto 50px auto;     /* 中央寄せ ＋ 下の要素との余白 */
-    padding: 2em 3em;             /* 横幅が広いので、文字の上下左右の余白を少し広げて優雅に */
+    max-width: 800px;
+    margin: 100px auto 50px auto; /* 上に大きな余白を確保して折り目を収める */
+    padding: 1.5em 2em;
     text-align: center;
-    font-size: 2.2rem;            /* 画面幅に合わせてタイトル文字を少し大きく、堂々と */
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #38486f;               /* 上品なネイビーグレー */
-
-    /* ─── 点線と外側のフレーム効果 ─── */
+    color: #38486f;
     border: dashed 2px rgba(255, 255, 255, 0.85); 
     box-shadow: 
         0px 0px 0px 6px rgba(255, 255, 255, 0.4), 
         0px 12px 32px rgba(0, 0, 0, 0.05);        
-
-    /* ─── 今どきのすりガラス質感 ─── */
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;          
+    border-radius: 12px;
 }
 
-/* 【位置調整】左上の折れ込みリボン装飾を点線の角にピタッと合わせる */
+/* 【大きく変更】左上に巨大で複雑な折り目を配置 */
 .page-header:after {
     position: absolute;
     content: '';
-    /* 位置を外枠のbox-shadow（6px）と角の丸みの内側に合わせて調整 */
-    left: -2px;
-    top: -8px;
-    /* 三角形のサイズをヘッダーの存在感に合わせて微調整 */
-    border-width: 0 0 16px 16px;
+    /* 巨大化させるためにサイズと位置を大幅に拡大 */
+    left: -40px;
+    top: -50px;
+    width: 200px;  /* 巨大な折り目のサイズ */
+    height: 100px;
+    /* 複数の折り重なりを再現するため、複数の擬似要素（:after, :before）を使用する代わりに、
+       複雑な三角形を border-width で作成して重ねます */
     border-style: solid;
-    /* 折れ返しの影になる部分の色を、ボタン色に近い綺麗な青（#5577be）に変更して統一感をアップ */
-    border-color: transparent transparent #5577be transparent;
-    box-shadow: -1px 1px 2px rgba(0, 0, 0, 0.1);
+    border-width: 15px 50px 15px 50px; /* 大胆なサイズ設定 */
+    /* 折り目の各面を異なる青色で塗り分けて、複雑な折り重なりを表現 */
+    border-color: #5577be transparent #4a6aa8 transparent; /* 上、右、下、左 */
+    border-radius: 20px; /* 折り目全体にも少し丸みを */
+    box-shadow: -5px 10px 15px rgba(0, 0, 0, 0.1); /* 大きな影を追加 */
+    
+    /* 動きを追加（hover時にさらに浮かせるなど） */
+    transition: all 0.3s ease;
+    z-index: -1; /* タイトル文字の後ろに配置 */
+}
+
+/* マウスホバー時に巨大な折り目がさらに存在感を増すように */
+.page-header:hover:after {
+    transform: translateY(-5px) scale(1.05); /* 浮かせて拡大 */
+    box-shadow: -10px 15px 25px rgba(0, 0, 0, 0.15); /* 影を大きく */
 }
 
 /* ==========================================
