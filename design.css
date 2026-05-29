@@ -27,7 +27,7 @@ body {
    ========================================== */
 .page-header {
     position: relative;
-    max-width: 800px;             /* 横に広がりすぎないよう制限 */
+    max-width: 400px;             /* 横に広がりすぎないよう制限 */
     margin: 0 auto 50px auto;     /* 中央寄せ ＋ 下の要素との余白 */
     padding: 1.5em 2em;           /* 余白をたっぷり贅沢にとる */
     text-align: center;
