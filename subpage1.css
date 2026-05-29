@@ -1,0 +1,249 @@
+/* ==========================================
+   1. 全体のベース設定
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1a3a1a 0%, #2d5a2d 40%, #1a3a50 100%);
+    background-attachment: fixed;
+    color: #f0f0f0;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    min-height: 100vh;
+    padding: 40px 5%;
+}
+
+/* ==========================================
+   2. ヘッダー
+   ========================================== */
+.page-header {
+    position: relative;
+    max-width: 860px;
+    margin: 0 auto 50px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: solid 2px rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
+    padding: 1.8em 2.5em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.page-header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.4em;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.page-header .lead {
+    font-size: 0.95rem;
+    color: #d0e8d0;
+    margin-bottom: 1.2em;
+}
+
+/* ==========================================
+   3. 戻るボタン
+   ========================================== */
+.btn-back {
+    display: inline-block;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: solid 1px rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-back:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   4. セクション共通
+   ========================================== */
+.section {
+    max-width: 860px;
+    margin: 0 auto 50px auto;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 2em 2.5em;
+}
+
+.section h2 {
+    font-size: 1.4rem;
+    color: #a8d8a8;
+    border-left: 4px solid #4caf50;
+    padding-left: 0.7em;
+    margin-bottom: 1em;
+}
+
+.section h3 {
+    font-size: 1.1rem;
+    color: #c8e8c8;
+    margin: 1.5em 0 0.7em 0;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.section p {
+    margin-bottom: 0.9em;
+    color: #e8e8e8;
+}
+
+/* ==========================================
+   5. 概要テーブル
+   ========================================== */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5em;
+}
+
+.info-table th,
+.info-table td {
+    padding: 0.75em 1em;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: top;
+}
+
+.info-table th {
+    width: 30%;
+    color: #a8d8a8;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.info-table td {
+    color: #f0f0f0;
+}
+
+.info-table tr:last-child th,
+.info-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==========================================
+   6. 会場テーブル
+   ========================================== */
+.venue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+.venue-table thead tr {
+    background: rgba(76, 175, 80, 0.25);
+}
+
+.venue-table th {
+    padding: 0.65em 1em;
+    text-align: left;
+    color: #c8f0c8;
+    font-weight: bold;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.5);
+}
+
+.venue-table td {
+    padding: 0.65em 1em;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    color: #e8e8e8;
+}
+
+.venue-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* ==========================================
+   7. 大会方式フロー
+   ========================================== */
+.format-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 1.5em;
+}
+
+.flow-step {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 0.8em 1em;
+    text-align: center;
+    min-width: 100px;
+    flex: 1;
+}
+
+.flow-step.highlight {
+    background: rgba(76, 175, 80, 0.3);
+    border-color: #4caf50;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+}
+
+.step-num {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a8d8a8;
+}
+
+.step-label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0.2em 0;
+}
+
+.step-detail {
+    font-size: 0.75rem;
+    color: #b0c8b0;
+    line-height: 1.4;
+}
+
+.flow-arrow {
+    font-size: 1.4rem;
+    color: #4caf50;
+    flex: 0 0 auto;
+}
+
+/* ==========================================
+   8. 参考文献
+   ========================================== */
+.references ul {
+    list-style: none;
+    padding: 0;
+}
+
+.references li {
+    margin-bottom: 1.2em;
+    padding-left: 1em;
+    border-left: 3px solid rgba(76, 175, 80, 0.5);
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.references a {
+    color: #80c8ff;
+    text-decoration: none;
+    word-break: break-all;
+    font-size: 0.85rem;
+}
+
+.references a:hover {
+    text-decoration: underline;
+}
