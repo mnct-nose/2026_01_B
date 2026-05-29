@@ -22,32 +22,38 @@ body {
 /* ==========================================
    2. ヘッダータイトル（洗練されたガラスリボン風）
    ========================================== */
+/* ==========================================
+   2. ヘッダータイトル（点線囲み ＋ ガラス質間の融合）
+   ========================================== */
 .page-header {
     position: relative;
     max-width: 800px;             /* 横に広がりすぎないよう制限 */
     margin: 0 auto 50px auto;     /* 中央寄せ ＋ 下の要素との余白 */
-    
-    /* トレンドのすりガラス（グラスモフィズム）要素をプラス */
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05); /* 優しい影 */
-    border: dashed 2px rgba(255, 255, 255, 0.7);
-    border-radius: 12px;          /* 角を少し丸めて柔らかく */
     padding: 1.5em 2em;           /* 余白をたっぷり贅沢にとる */
-    color: #38486f;               /* 背景に馴染む上品なネイビーグレー */
+    text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    text-align: center;
+    color: #38486f;               /* 上品なネイビーグレー */
+
+    /* ─── 【復活】点線と外側のフレーム効果 ─── */
+    border: dashed 2px rgba(255, 255, 255, 0.85); /* 復活した白い点線（少し馴染むように透過） */
+    box-shadow: 
+        0px 0px 0px 6px rgba(255, 255, 255, 0.4), /* 点線の外側の「二重フレーム」を再現 */
+        0px 12px 32px rgba(0, 0, 0, 0.05);        /* 全体がふんわり浮き上がる影を追加 */
+
+    /* ─── 【ベース】今どきのすりガラス質感 ─── */
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;          /* 角を丸くして点線をさらにおしゃれに */
 }
 
-/* 元々あった左上の折れ込み装飾を、丸みのあるヘッダーに合わせて微調整 */
+/* 左上の折れ込みリボン装飾（位置を点線の外枠に合わせて微調整） */
 .page-header:after {
     position: absolute;
     content: '';
-    left: 10px;
-    top: -10px;
+    left: 4px;
+    top: -14px;
     border-width: 0 0 15px 15px;
     border-style: solid;
     border-color: #fff #fff #668ad8;
