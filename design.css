@@ -1,95 +1,228 @@
-/* ==========================================
-   1. 全体のベース設定（すっきり・モダン化）
-   ========================================== */
+/* Apple Store inspired visual system for the tourism data page */
+:root {
+    --page: #f5f5f7;
+    --card: #ffffff;
+    --card-soft: #fbfbfd;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --muted-strong: #515154;
+    --blue: #0066cc;
+    --orange: #bf4800;
+    --line: rgba(0, 0, 0, 0.08);
+    --shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
+    --radius-lg: 30px;
+    --radius-md: 22px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    /* グラデーション背景で、ただのベタ塗りからエモーショナルな背景へ */
-    background: linear-gradient(135deg, #afc5e4 0%, #cfe0f4 50%, #eef5fc 100%);
-    background-attachment: fixed; /* スクロールしても背景のグラデーション位置を固定 */
-    color: #1a1a1a;               /* 真っ黒を避けて、高級感のある極濃グレーに */
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    line-height: 1.8;
-    letter-spacing: 0.05em;       /* 文字の間隔を少し広げて今っぽく */
-    min-height: 200vh;            /* スクロール確認用に調整（500vhは少し長すぎるので一旦200vhに） */
-    padding: 40px 5%;
+    min-height: 100vh;
+    background: var(--page);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.7;
+    letter-spacing: 0;
+    padding: 54px 0 88px;
 }
 
-/* ==========================================
-   2. ヘッダータイトル（洗練されたガラスリボン風）
-   ========================================== */
-/* ==========================================
-   2. ヘッダータイトル（点線囲み ＋ ガラス質間の融合）
-   ========================================== */
 .page-header {
+    width: min(1280px, calc(100% - 80px));
+    min-height: 340px;
+    margin: 0 auto 42px;
+    display: grid;
+    align-content: center;
+    padding: 56px 0 72px;
+}
+
+.page-header h1 {
+    max-width: 980px;
+    margin-bottom: 22px;
+    color: var(--text);
+    font-size: clamp(4.2rem, 8vw, 7.2rem);
+    font-weight: 700;
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+}
+
+.lead {
+    max-width: 820px;
+    color: var(--muted);
+    font-size: clamp(1.25rem, 2vw, 1.72rem);
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.025em;
+}
+
+main {
+    width: min(1280px, calc(100% - 80px));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+}
+
+.section {
     position: relative;
-    max-width: 1500px;             /* 横に広がりすぎないよう制限 */
-    margin: 0 auto 50px auto;     /* 中央寄せ ＋ 下の要素との余白 */
-    padding: 1.5em 2em;           /* 余白をたっぷり贅沢にとる */
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #38486f;               /* 上品なネイビーグレー */
-
-    /* ─── 【復活】点線と外側のフレーム効果 ─── */
-    border: dashed 2px rgba(255, 255, 255, 0.85); /* 復活した白い点線（少し馴染むように透過） */
-    box-shadow: 
-        0px 0px 0px 6px rgba(255, 255, 255, 0.4), /* 点線の外側の「二重フレーム」を再現 */
-        0px 12px 32px rgba(0, 0, 0, 0.05);        /* 全体がふんわり浮き上がる影を追加 */
-
-    /* ─── 【ベース】今どきのすりガラス質感 ─── */
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 12px;          /* 角を丸くして点線をさらにおしゃれに */
+    min-height: 330px;
+    padding: 38px 42px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--card);
+    box-shadow: var(--shadow);
 }
 
-/* 左上の折れ込みリボン装飾（位置を点線の外枠に合わせて微調整） */
-.page-header:after {
+.section:first-child,
+.section.references {
+    grid-column: 1 / -1;
+    min-height: auto;
+}
+
+.section:nth-child(2) {
+    grid-column: 1 / -1;
+}
+
+.section::after {
+    content: "";
     position: absolute;
-    content: '';
-    left: 4px;
-    top: -14px;
-    border-width: 0 0 15px 15px;
-    border-style: solid;
-    border-color: #fff #fff #668ad8;
-    border-radius: 0 0 4px 0;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    right: -120px;
+    bottom: -150px;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(175, 82, 222, 0.08));
+    pointer-events: none;
 }
 
-/* ==========================================
-   3. 立体ボタン（クリック感を最高に気持ちよく）
-   ========================================== */
-.btn-square {
-    display: inline-block;
-    padding: 1rem 2.5rem;         /* ボタンを少し大きめにして今っぽく */
+.section h2,
+.section h3,
+.section p,
+.references ul {
+    position: relative;
+    z-index: 1;
+}
+
+.section h2 {
+    max-width: 900px;
+    margin-bottom: 20px;
+    color: var(--text);
+    font-size: clamp(2.1rem, 3.2vw, 3.55rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.055em;
+}
+
+.section h3 {
+    margin: 34px 0 10px;
+    color: var(--text);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+}
+
+.section h3::before {
+    content: "";
+    display: block;
+    width: 38px;
+    height: 4px;
+    margin-bottom: 14px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--orange), #ff9f0a);
+}
+
+.section p {
+    max-width: 940px;
+    margin-bottom: 18px;
+    color: var(--muted-strong);
+    font-size: 1.08rem;
+    font-weight: 400;
+    line-height: 1.82;
+}
+
+.section p:last-child {
+    margin-bottom: 0;
+}
+
+.section:first-child p,
+.section:nth-child(3) p,
+.section:nth-child(4) p {
+    font-size: 1.16rem;
+}
+
+.references ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    list-style: none;
+}
+
+.references li {
+    padding: 20px 22px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--card-soft);
+    color: var(--muted-strong);
+    font-size: 0.98rem;
+    line-height: 1.65;
+}
+
+a {
+    color: var(--blue);
     text-decoration: none;
-    background: linear-gradient(135deg, #668ad8 0%, #5577be 100%); /* 微細なグラデで立体感 */
-    color: #FFF;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    border-bottom: solid 5px #4a6aa8; /* 下線の色を少し濃くして立体感を強調 */
-    border-radius: 50px;          /* 完全に丸みを持たせるのが今のトレンド */
-    box-shadow: 0 10px 20px rgba(102, 138, 216, 0.3); /* ボタン自体が浮いているような影 */
-    
-    /* 動きを滑らかにする魔法の1行 */
-    transition: transform 0.1s ease, border-bottom 0.1s ease, box-shadow 0.1s ease;
 }
 
-/* マウスが乗ったとき（押す前の一歩） */
+a:hover {
+    text-decoration: underline;
+}
+
+.references a {
+    word-break: break-all;
+}
+
+.btn-square {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.68rem 1.35rem;
+    border: 0;
+    border-radius: 999px;
+    background: var(--blue);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.18s ease, transform 0.18s ease;
+}
+
 .btn-square:hover {
-    transform: translateY(-2px);  /* ほんの少し上に浮かせて「押せる感」を出す */
-    box-shadow: 0 14px 24px rgba(102, 138, 216, 0.4); /* 影を強くする */
+    background: #0071e3;
+    text-decoration: none;
+    transform: translateY(-1px);
 }
 
-/* ボタンを実際にクリックしたとき（active） */
 .btn-square:active {
-    /* 元のhoverに書いてあった「押し込む動き」をactive（クリックした瞬間）に移植 */
-    transform: translateY(5px);   /* 下線（5px）の分だけきれいに沈み込ませる */
-    border-bottom: solid 0px #4a6aa8; /* 線を完全につぶす */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影を最小限にしてベタ付けにする */
+    transform: translateY(0);
+}
+
+@media (max-width: 960px) {
+    .page-header,
+    main {
+        width: min(900px, calc(100% - 48px));
+    }
+
+    main,
+    .references ul {
+        grid-template-columns: 1fr;
+    }
 }
