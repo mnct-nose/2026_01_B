@@ -1,13 +1,14 @@
 body {
     background-color: #afc5e4; /* 背景を薄いグレーに */
-    color: #060606;           /* 文字を濃いグレーにして読みやすく */
+    color: #060606; 
+    min-height: 500vh;          /* 文字を濃いグレーにして読みやすく */
 }
 
 .btn-square {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none;
-  background: #668ad8;/*ボタン色*/
+  background: #668ad8;/*ボタン色これ次変更*/
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
@@ -37,3 +38,4 @@ body {
   border-color: #fff #fff #a8d4ff;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
 }/*h1タイトル
+
