@@ -209,6 +209,7 @@ main {
     color: var(--muted);
     font-weight: 600;
     white-space: nowrap;
+    font-family: "MS PGothic", monospace;
 }
 
 .venue-table thead tr {
@@ -311,6 +312,66 @@ main {
 }
 
 .references a:hover {
+    color: #ff0000;
+}
+
+/* ==========================================
+   フッター ナビボタン
+   ========================================== */
+.page-footer {
+    text-align: center;
+    padding: 8px;
+    margin-top: 4px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+}
+
+.nav-button {
+    display: inline-block;
+    padding: 4px 20px;
+    background: #c0c0c0;
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: "MS PGothic", monospace;
+    font-weight: bold;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    background: #d0d0d0;
+    color: #000080;
+    text-decoration: none;
+}
+
+.nav-button:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* ==========================================
+   水平線
+   ========================================== */
+hr {
+    border: none;
+    border-top: 2px inset #808080;
+    margin: 8px 0;
+}
+
+/* ==========================================
+   リンク全般
+   ========================================== */
+a {
+    color: #0000cc;
     text-decoration: underline;
 }
 
